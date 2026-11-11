@@ -1,0 +1,203 @@
+/* =========================================================
+   BIOCOMPUTACION.CSS — solo para biocomputacion.html
+   ========================================================= */
+
+/* ---------- AJUSTES RÁPIDOS ---------- */
+.bio {
+  --luz-r: 160px;          /* radio del círculo de luz del ratón */
+  --fondo-brillo: .16;     /* brillo de la red "apagada" (0 = negra) */
+}
+
+/* ---------- RED NEURONAL ---------- */
+.bio {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  cursor: crosshair;
+}
+
+/* Las dos imágenes ocupan toda la stage con el mismo recorte ("cover"),
+   así coinciden píxel a píxel */
+.bio img,
+.bio-luz {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.bio img {
+  object-fit: cover;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* Capa apagada: siempre visible, muy oscura */
+.bio-fondo {
+  filter: brightness(var(--fondo-brillo)) saturate(.8);
+}
+
+/* Capa encendida: solo se ve dentro del círculo de luz.
+   --mx / --my / --r los actualiza js/biocomputacion.js */
+.bio-luz {
+  --mx: -999px;
+  --my: -999px;
+  --r: 0px;
+  -webkit-mask-image: radial-gradient(circle var(--r) at var(--mx) var(--my),
+                      #000 0%, rgba(0,0,0,.75) 35%, rgba(0,0,0,.25) 70%, transparent 100%);
+          mask-image: radial-gradient(circle var(--r) at var(--mx) var(--my),
+                      #000 0%, rgba(0,0,0,.75) 35%, rgba(0,0,0,.25) 70%, transparent 100%);
+}
+
+.bio-luz img {
+  filter: brightness(1.35) saturate(1.25) drop-shadow(0 0 6px rgba(80, 200, 255, .55));
+}
+
+/* Cruz que marca cada punto con DATA (siempre visible, encima de la red) */
+.bio-marca {
+  position: absolute;
+  z-index: 1;
+  width: 22px;
+  height: 22px;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.bio-marca::before,
+.bio-marca::after {
+  content: '';
+  position: absolute;
+  background: var(--yellow);
+  box-shadow: var(--glow-y);
+}
+.bio-marca::before { left: 50%; top: 0; width: 1px; height: 100%; }
+.bio-marca::after  { top: 50%; left: 0; height: 1px; width: 100%; }
+
+/* Anillo que late alrededor de la cruz */
+.bio-marca i {
+  position: absolute;
+  inset: -6px;
+  border: 1px solid var(--yellow);
+  border-radius: 50%;
+  animation: latido 1.8s ease-out infinite;
+}
+
+.bio-marca.is-active i {
+  border-color: var(--blue);
+  animation-duration: .9s;
+}
+
+@keyframes latido {
+  from { transform: scale(.4); opacity: 1; }
+  to   { transform: scale(1.6); opacity: 0; }
+}
+
+/* ---------- PANELES DE DATA ---------- */
+/* Hereda .data de styles.css (borde azul, .contador, .bar).
+   Aquí solo cambia la posición (la pone el JS junto al punto) y la aparición. */
+.bio-data {
+  top: 0;
+  right: auto;
+  left: 0;
+  width: min(300px, 70vw);
+  z-index: 3;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .3s, visibility 0s .3s;
+}
+
+.bio-data.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity .3s;
+}
+
+/* El borde azul "crece" de arriba abajo */
+.bio-data {
+  border-left-color: transparent;
+}
+.bio-data::before {
+  content: '';
+  position: absolute;
+  left: -2px;
+  top: 0;
+  width: 2px;
+  height: 100%;
+  background: var(--blue);
+  box-shadow: 0 0 8px rgba(59, 91, 240, .8);
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform .4s ease-out;
+}
+.bio-data.is-visible::before {
+  transform: scaleY(1);
+}
+
+/* Las líneas van apareciendo una tras otra */
+.bio-data > * {
+  opacity: 0;
+  transform: translateX(-6px);
+  transition: opacity .25s, transform .25s;
+}
+.bio-data.is-visible > * {
+  opacity: 1;
+  transform: none;
+  transition: opacity .4s ease-out, transform .4s ease-out;
+}
+.bio-data.is-visible > :nth-child(1) { transition-delay: .15s; }
+.bio-data.is-visible > :nth-child(2) { transition-delay: .35s; }
+.bio-data.is-visible > :nth-child(3) { transition-delay: .55s; }
+.bio-data.is-visible > :nth-child(4) { transition-delay: .75s; }
+
+.bio-data p {
+  text-align: left;
+}
+
+/* ---------- TEXTO (igual que realidad.html) ---------- */
+.bio-texto {
+  position: absolute;
+  top: clamp(40px, 9vh, 100px);
+  left: clamp(18px, 3.3vw, 56px);
+  width: min(340px, 40vw);
+  pointer-events: none;   /* el ratón "atraviesa" el texto y sigue iluminando */
+  z-index: 2;
+}
+
+.bio-texto h2,
+.bio-texto p {
+  animation: aparecer 1.5s ease-out both;
+}
+
+.bio-texto p + p {
+  margin-top: 20px;
+}
+
+@keyframes aparecer {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.stage .brand,
+.stage .credits {
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* ---------- MÓVIL ---------- */
+@media (max-width: 900px) {
+  .bio { --luz-r: 170px; }
+
+  .bio-texto {
+    width: auto;
+    right: 18px;
+    top: 20px;
+  }
+
+  /* styles.css oculta .data en móvil; aquí sí se muestra */
+  .bio-data { display: block; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bio-marca i { animation: none; }
+}

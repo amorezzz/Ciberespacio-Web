@@ -1,0 +1,100 @@
+/* =========================================================
+   INMORTALIDAD.CSS — solo para inmortalidad.html
+   ========================================================= */
+
+/* ---------- CHICO CAMINANDO ---------- */
+/* El canvas siempre está centrado y nunca se mueve: solo cambia
+   lo que se pinta dentro (frame, dirección y tamaño del píxel). */
+.inmortal-canvas {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  height: min(78vh, 900px);   /* altura del chico en pantalla */
+  width: auto;
+  max-width: 90vw;
+  transform: translate(-50%, -50%);
+  /* Halo azul de holograma (como en el prototipo) */
+  filter: drop-shadow(0 0 14px rgba(59, 91, 240, .75))
+          drop-shadow(0 0 40px rgba(59, 91, 240, .45));
+  pointer-events: none;
+}
+
+/* Mirando a la izquierda = el canvas en espejo (sigue centrado) */
+.inmortal-canvas.mira-izquierda {
+  transform: translate(-50%, -50%) scaleX(-1);
+}
+
+/* Toda la escena es clicable: mitad derecha avanza, mitad izquierda retrocede */
+.stage {
+  cursor: crosshair;
+}
+
+/* ---------- TEXTO (misma posición que copias.html) ---------- */
+.inmortal-texto {
+  position: absolute;
+  top: clamp(40px, 9vh, 100px);
+  left: clamp(18px, 3.3vw, 56px);
+  width: min(340px, 40vw);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.inmortal-texto h2,
+.inmortal-texto p {
+  animation: aparecer 1.5s ease-out both;
+}
+
+.inmortal-texto p + p {
+  margin-top: 20px;
+}
+
+/* Diálogo Case / Dixie: las respuestas de Dixie en otro tono */
+.dialogo {
+  color: var(--yellow);
+}
+
+.dialogo .dixie {
+  color: #ff5e3a;
+  text-shadow: 0 0 8px rgba(255, 94, 58, .55);
+}
+
+/* ---------- HUD: paso actual ---------- */
+.inmortal-hud {
+  margin-top: 28px;
+  padding-left: 10px;
+  border-left: 2px solid var(--blue);
+  animation: aparecer 1.5s ease-out .6s both;
+}
+
+.inmortal-hud p + p {
+  margin-top: 4px;
+}
+
+#paso-num {
+  color: var(--yellow);
+}
+
+@keyframes aparecer {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.stage .brand,
+.stage .credits {
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* ---------- MÓVIL ---------- */
+@media (max-width: 900px) {
+  .inmortal-texto {
+    width: auto;
+    right: 18px;
+    top: 20px;
+  }
+
+  .inmortal-canvas {
+    top: 62%;
+    height: 55vh;
+  }
+}

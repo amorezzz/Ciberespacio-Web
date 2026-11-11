@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ciberespacio</title>
+  <link rel="icon" href="xxx" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Share+Tech+Mono&display=swap">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  
+  <!-- NAV: única fuente de verdad de las páginas. Cada enlace crea una zona clicable sobre su punto amarillo del globo.
+       data-pos = posición del objeto Punto_xxx en Blender, en coordenadas glTF (X, Z, -Y de Blender) -->
+
+  <nav class="nav" aria-label="Secciones">
+    <!-- Icono de regreso a la portada -->
+    <a class="nav__home" href="index.html" aria-label="Volver al inicio">
+      <img src="assets/globe_icon.svg" alt="" width="41" height="41">
+    </a>
+
+    <!-- data-pos: eso está marcando dónde se sitúa cada punto de la escena de blender para poder enlazarlo.-->
+    <a class="nav__item" data-id="realidad" data-pos="0.0874 0.9078 0.5426" data-title="La realidad y la simulación" href="pages/realidad.html">
+      <svg viewBox="0 0 30 30" aria-hidden="true">
+        <polygon points="15,3 28,27 2,27"/>
+      </svg>
+      <span>La realidad y la
+        simulación</span>
+    </a>
+
+    <a class="nav__item" data-id="implantes" data-pos="-0.5347 -0.3932 -0.8154" data-title="Tejidos neuronales, biocomputadoras" href="pages/biocomputacion.html">
+      <svg viewBox="0 0 30 30" aria-hidden="true">
+        <polygon points="15,3 28,27 2,27"/>
+      </svg>
+      <span>Tejidos neuronales,
+        biocomputadoras</span>
+    </a>
+
+    <a class="nav__item" data-id="biocomputacion" data-pos="0.0127 -0.5236 0.9333" data-title="Recreaciones de los conectomas" href="pages/conectomas.html">
+      <svg viewBox="0 0 30 30" aria-hidden="true">
+        <polygon points="15,3 28,27 2,27"/>
+      </svg>
+      <span>Recreaciones de los
+        conectomas</span>
+    </a>
+
+    <a class="nav__item" data-id="inteligencia" data-pos="0.8264 0.2755 -0.5952" data-title="Tus propias copias digitales" href="pages/copias.html">
+      <svg viewBox="0 0 30 30" aria-hidden="true">
+        <polygon points="15,3 28,27 2,27"/>
+      </svg>
+      <span>Tus propias copias
+        digitales</span>
+    </a>
+
+    <a class="nav__item" data-id="paralelismo" data-pos="-1.4024 0.2139 -0.6017" data-title="Una inmortalidad digital" href="pages/inmortalidad.html">
+      <svg viewBox="0 0 30 30" aria-hidden="true">
+        <polygon points="15,3 28,27 2,27"/>
+      </svg>
+      <span>Una inmortalidad
+        digital</span>
+    </a>
+
+    <a class="nav__item" data-id="conectomas" data-pos="1.2765 0.0045 -0.5472" data-title="Adéntrate en el ciberespacio" href="pages/adentrate.html">
+      <svg viewBox="0 0 30 30" aria-hidden="true">
+        <polygon points="15,3 28,27 2,27"/>
+      </svg>
+      <span>Adéntrate en el
+        ciberespacio</span>
+    </a>
+  </nav>
+
+
+  <!-- OVERLAY DE INFO: se superpone a la página, entrando desde la izquierda al pulsar INFO.
+       Estructura reutilizable para otras pestañas: <aside class="overlay"> + h2 + p -->
+  <aside class="overlay" id="infoPanel" aria-labelledby="infoTitle" tabindex="-1">
+    <button class="overlay__close" id="infoClose" type="button" aria-label="Cerrar información">✕</button>
+    <h2 id="infoTitle">¿Qué es el ciberespacio?</h2>
+    <p>Neuromante -afamada novela de ciencia ficción de los años 80- dió lugar al concepto del ciberespacio, definido como todo aquel plano intangible que forma parte del mundo virtual. Cada día formamos más parte de él, incluso siendo para algunos un lugar dónde pasan más tiempo que la realidad misma. ¿Cómo es el ciberespacio? ¿Qué podemos sacar de él? ¿Acaso podemos vivir en él?</p>
+    <p>Esta web es un homenaje a la novela y al mismo tiempo, una reflexión sobre los tiempos actuales, aproximándose a especular sobre el futuro que nos espera como seres humanos vividos del acceleracionismo.</p>
+
+    <!-- Suelo reticular 3D animado, en la parte inferior del overlay -->
+    <model-viewer id="suelo3d" class="overlay__suelo" src="assets/cilindro_web.glb"
+      alt="Suelo reticular girando" autoplay interaction-prompt="none"
+      camera-orbit="90deg 74deg 1.4m" camera-target="0.4m 1.4m 0m"
+      field-of-view="72deg" max-field-of-view="72deg" min-camera-orbit="auto auto 0m"
+      tone-mapping="neutral" exposure="1" shadow-intensity="0"
+      environment-image="assets/entorno_negro.png">
+      <!-- environment-image: iluminación de ambiente totalmente negra, para que el plano
+           "Negro" no refleje luz y se funda con el fondo. Lo emisivo brilla igual. -->
+      <effect-composer render-mode="quality" msaa="4">
+        <bloom-effect strength="1.6" threshold="0.25" radius="0.55" smoothing="0.3"></bloom-effect>
+      </effect-composer>
+    </model-viewer>
+  </aside>
+
+  <main class="stage">
+    <!-- Visor 3D: <model-viewer> carga el .glb tal cual sale de Blender (respeta la intensidad de emisión)
+         TAMAÑO DEL GLOBO → tercer valor de camera-orbit (distancia de la cámara):
+           105% = tamaño automático original · 81% = un 30 % más grande
+           Menos % = globo más grande · Más % = globo más pequeño -->
+    <model-viewer id="scene"
+      src="assets/globo_web.glb"
+      alt="Globo reticular 3D interactivo. Arrastra para girarlo; los puntos amarillos llevan a otras páginas."
+      camera-controls
+      disable-zoom
+      disable-pan
+      interaction-prompt="none"
+      auto-rotate
+      auto-rotate-delay="0"
+      rotation-per-second="8deg"
+      camera-orbit="30deg 70deg 81%"
+      min-camera-orbit="auto 0deg auto"
+      max-camera-orbit="auto 180deg auto"
+      tone-mapping="neutral"
+      exposure="1"
+      shadow-intensity="0">
+
+      <!-- Postprocesado: el brillo (bloom) -->
+      <effect-composer render-mode="quality" msaa="4">
+        <bloom-effect strength="1.6" threshold="0.25" radius="0.55" smoothing="0.3"></bloom-effect>
+      </effect-composer>
+
+      <!-- Aquí main.js añade un botón invisible (hotspot) encima de cada punto amarillo -->
+    </model-viewer>
+
+
+    <aside class="data" aria-hidden="true">
+      <p>Subject nº <span id="subject">···</span></p>
+      <p>Tiempo que has pasado en el ciberespacio:</p>
+      <span id="tiempo" class="contador">00:00:00:00</span>
+      <div class="bar"><i></i></div>
+    </aside>
+
+    <p class="caption" id="caption" data-default="Adéntrate en el ciberespacio">Adéntrate en el ciberespacio</p>
+
+    <button class="info-btn" id="infoBtn" type="button" aria-expanded="false" aria-controls="infoPanel">INFO</button>
+
+    <!-- Indicación de interacción -->
+    <p class="hint" data-en="#scene">Arrastra el globo · pulsa un punto amarillo</p>
+
+    <h1 class="brand">Ciberespacio</h1>
+    <p class="credits">AMORE© 2026
+      ESD Gráfica Multimedia</p>
+  </main>
+
+  <!-- model-viewer y sus efectos comparten un mismo motor interno: se le indica cuál con este import map -->
+  <script type="importmap">
+    { "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.174.0/build/three.module.min.js" } }
+  </script>
+  <!-- Visor 3D de Google -->
+  <script type="module" src="https://cdn.jsdelivr.net/npm/@google/model-viewer@4.1.0/dist/model-viewer-module.min.js"></script>
+  <!-- Efectos de postprocesado (bloom) para model-viewer -->
+  <script type="module" src="https://cdn.jsdelivr.net/npm/@google/model-viewer-effects@1.5.0/dist/model-viewer-effects.min.js"></script>
+
+  <!-- Conexión con el archivo JS -->
+  <script src="js/main.js"></script>
+  <!-- Oculta la pastilla de indicación tras la primera interacción -->
+  <script src="js/hint.js"></script>
+  
+</body>
+</html>

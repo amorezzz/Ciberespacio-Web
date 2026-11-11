@@ -1,0 +1,97 @@
+/* =========================================================
+   ADENTRATE.CSS — solo para adentrate.html
+   ========================================================= */
+
+/* ---------- CÁMARA ---------- */
+/* El canvas ocupa toda la .stage (js/adentrate.js lo dibuja tipo "cover") */
+.adentrate-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--bg);
+}
+
+/* El <video> solo sirve de fuente para el canvas: no se ve */
+.adentrate-video {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ---------- TEXTO (misma posición que las otras secciones) ----------
+   Marco negro con borde naranja para que se lea sobre la cámara */
+.adentrate-texto {
+  position: absolute;
+  top: clamp(40px, 9vh, 100px);
+  left: clamp(18px, 3.3vw, 56px);
+  width: min(380px, 40vw);
+  padding: 18px 18px 20px;
+  background: rgba(0, 0, 0, .82);
+  border: 1.5px solid var(--orange);
+  box-shadow: var(--glow-y), inset 0 0 10px rgba(255, 133, 46, .15);
+  pointer-events: none;
+  z-index: 2;
+  animation: aparecer 1.5s ease-out both;
+}
+
+/* ---------- HUD: nivel del filtro (cajetilla de borde azul) ---------- */
+.adentrate-hud {
+  margin-top: 22px;
+  padding-left: 10px;
+  border-left: 2px solid var(--blue);
+  animation: aparecer 1.5s ease-out .6s both;
+}
+
+.adentrate-hud p + p {
+  margin-top: 4px;
+}
+
+#nivel-num {
+  color: var(--yellow);
+}
+
+/* Barra de progreso de la degradación: se rellena con el mapa de degradado */
+.adentrate-barra {
+  margin-top: 12px;
+  height: 14px;
+  padding: 2px;
+  border: 1px solid var(--blue);
+  box-shadow: 0 0 8px rgba(59, 91, 240, .5);
+}
+
+.adentrate-barra i {
+  display: block;
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg, #13205f, #1a3bb5 20%, #fff);
+  background-size: calc(min(380px, 40vw) - 64px) 100%;
+  transition: width .6s steps(4);
+}
+
+@keyframes aparecer {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* La marca y los créditos por encima de la cámara */
+.stage .brand,
+.stage .credits {
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* ---------- MÓVIL ---------- */
+@media (max-width: 900px) {
+  .adentrate-texto {
+    width: auto;
+    right: 18px;
+    top: 20px;
+    padding: 12px 14px 14px;
+  }
+
+  .adentrate-texto > p {
+    display: none;  /* en móvil solo título + HUD, para ver la cámara */
+  }
+}

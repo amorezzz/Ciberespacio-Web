@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ciberespacio · Una inmortalidad digital</title>
+  <link rel="icon" href="../assets/globe_icon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Share+Tech+Mono&display=swap">
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/inmortalidad.css">
+</head>
+<body>
+   <nav class="nav" aria-label="Secciones">
+    <!-- Icono de regreso a la portada -->
+    <a class="nav__home" href="../index.html" aria-label="Volver al inicio">
+      <img src="../assets/globe_icon.svg" alt="" width="41" height="41">
+    </a>
+    <a class="nav__item" data-id="realidad" data-title="La realidad y la simulación" href="realidad.html">
+      <svg viewBox="0 0 30 30" aria-hidden="true">
+        <polygon points="15,3 28,27 2,27"/>
+      </svg>
+      <span>La realidad y la
+        simulación</span>
+    </a>
+
+    <a class="nav__item" data-id="implantes" data-title="Tejidos neuronales, biocomputadoras" href="biocomputacion.html">
+      <svg viewBox="0 0 30 30" aria-hidden="true">
+        <polygon points="15,3 28,27 2,27"/>
+      </svg>
+      <span>Tejidos neuronales,
+        biocomputadoras</span>
+    </a>
+
+    <a class="nav__item" data-id="biocomputacion" data-title="Recreaciones de los conectomas" href="conectomas.html">
+      <svg viewBox="0 0 30 30" aria-hidden="true">
+        <polygon points="15,3 28,27 2,27"/>
+      </svg>
+      <span>Recreaciones de los
+        conectomas</span>
+    </a>
+
+    <a class="nav__item" data-id="inteligencia" data-title="Tus propias copias digitales" href="copias.html">
+      <svg viewBox="0 0 30 30" aria-hidden="true">
+        <polygon points="15,3 28,27 2,27"/>
+      </svg>
+      <span>Tus propias copias
+        digitales</span>
+    </a>
+
+    <!-- is-active: marca esta sección como la página actual -->
+    <a class="nav__item is-active" aria-current="page" data-id="paralelismo" data-title="Una inmortalidad digital" href="inmortalidad.html">
+      <svg viewBox="0 0 30 30" aria-hidden="true">
+        <polygon points="15,3 28,27 2,27"/>
+      </svg>
+      <span>Una inmortalidad
+        digital</span>
+    </a>
+
+    <a class="nav__item" data-id="conectomas" data-title="Adéntrate en el ciberespacio" href="adentrate.html">
+      <svg viewBox="0 0 30 30" aria-hidden="true">
+        <polygon points="15,3 28,27 2,27"/>
+      </svg>
+      <span>Adéntrate en el
+        ciberespacio</span>
+    </a>
+  </nav>
+
+  <main class="stage">
+
+    <!-- CHICO CAMINANDO: js/inmortalidad.js pinta aquí los 4 frames
+         (assets/chico_caminando*.png) con el filtro PIXELADO.
+         → avanza y pixela · ← retrocede, mira a la izquierda y despixela -->
+    <canvas class="inmortal-canvas" id="chico-canvas"
+            aria-label="Un chico camina y se va pixelando con cada paso hacia la derecha"></canvas>
+
+    <!-- Texto de la sección -->
+    <section class="inmortal-texto">
+      <h2>Una inmortalidad
+        digital</h2>
+      <p>Divagaremos en la eternidad e infinitud del ciberespacio, flotando en cascadas de código y navegando en la sobreinformación. ¿Cómo sabremos lo que es real o no?</p>
+      <p>//</p>
+      <p class="dialogo">- ¿Cómo te va Dixie?
+<span class="dixie">- Estoy muerto Case. He pasado ya bastante tiempo en este Hosaka como para saberlo.</span>
+- ¿Qué se siente?
+<span class="dixie">- No se siente.</span>
+- ¿Te molesta?
+<span class="dixie">- Lo que me molesta es que nada me molesta.</span></p>
+
+      <!-- HUD: lo actualiza js/inmortalidad.js -->
+      <div class="inmortal-hud" aria-live="polite">
+        <p id="paso-num">Paso 00/24</p>
+        <p id="paso-integridad">Integridad 100%</p>
+      </div>
+    </section>
+
+    <!-- Indicación de interacción -->
+    <p class="hint" data-ocultar-con="keydown click" data-teclas="ArrowLeft ArrowRight">Usa ← → para caminar</p>
+
+    <h1 class="brand">Ciberespacio</h1>
+    <p class="credits">AMORE© 2026
+      ESD Gráfica Multimedia</p>
+  </main>
+
+  <script src="../js/inmortalidad.js"></script>
+  <!-- Oculta la pastilla de indicación tras la primera interacción -->
+  <script src="../js/hint.js"></script>
+</body>
+</html>

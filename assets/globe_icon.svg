@@ -1,0 +1,9 @@
+<svg width="41" height="41" viewBox="0 0 41 41" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="20.395" cy="20.395" r="19.895" stroke="#FFB52E"/>
+<mask id="stroke0_192_322" fill="white">
+<path d="M31.6134 20.395C31.6134 9.13116 26.5908 0 20.395 0C14.1993 0 9.17664 9.13116 9.17664 20.395C9.17664 31.6589 14.1993 40.79 20.395 40.79C26.5908 40.79 31.6134 31.6589 31.6134 20.395Z"/>
+</mask>
+<ellipse cx="20.395" cy="20.395" rx="11.2184" ry="20.395" stroke-width="2" stroke="#FFB52E" mask="url(#stroke0_192_322)"/>
+<path d="M20.1943 0.866821V40.5995" stroke="#FFB52E"/>
+<path d="M40.0657 20.7281L0.333008 20.7281" stroke="#FFB52E"/>
+</svg>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ciberespacio · Tejidos neuronales, biocomputadoras</title>
+  <link rel="icon" href="../assets/globe_icon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Share+Tech+Mono&display=swap">
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/biocomputacion.css">
+</head>
+<body>
+   <nav class="nav" aria-label="Secciones">
+    <!-- Icono de regreso a la portada -->
+    <a class="nav__home" href="../index.html" aria-label="Volver al inicio">
+      <img src="../assets/globe_icon.svg" alt="" width="41" height="41">
+    </a>
+    <a class="nav__item" data-id="realidad" data-title="La realidad y la simulación" href="realidad.html">
+      <svg viewBox="0 0 30 30" aria-hidden="true">
+        <polygon points="15,3 28,27 2,27"/>
+      </svg>
+      <span>La realidad y la
+        simulación</span>
+    </a>
+
+    <!-- is-active: marca esta sección como la página actual -->
+    <a class="nav__item is-active" aria-current="page" data-id="implantes" data-title="Tejidos neuronales, biocomputadoras" href="biocomputacion.html">
+      <svg viewBox="0 0 30 30" aria-hidden="true">
+        <polygon points="15,3 28,27 2,27"/>
+      </svg>
+      <span>Tejidos neuronales,
+        biocomputadoras</span>
+    </a>
+
+    <a class="nav__item" data-id="biocomputacion" data-title="Recreaciones de los conectomas" href="conectomas.html">
+      <svg viewBox="0 0 30 30" aria-hidden="true">
+        <polygon points="15,3 28,27 2,27"/>
+      </svg>
+      <span>Recreaciones de los
+        conectomas</span>
+    </a>
+
+    <a class="nav__item" data-id="inteligencia" data-title="Tus propias copias digitales" href="copias.html">
+      <svg viewBox="0 0 30 30" aria-hidden="true">
+        <polygon points="15,3 28,27 2,27"/>
+      </svg>
+      <span>Tus propias copias
+        digitales</span>
+    </a>
+
+    <a class="nav__item" data-id="paralelismo" data-title="Una inmortalidad digital" href="inmortalidad.html">
+      <svg viewBox="0 0 30 30" aria-hidden="true">
+        <polygon points="15,3 28,27 2,27"/>
+      </svg>
+      <span>Una inmortalidad
+        digital</span>
+    </a>
+
+    <a class="nav__item" data-id="conectomas" data-title="Adéntrate en el ciberespacio" href="adentrate.html">
+      <svg viewBox="0 0 30 30" aria-hidden="true">
+        <polygon points="15,3 28,27 2,27"/>
+      </svg>
+      <span>Adéntrate en el
+        ciberespacio</span>
+    </a>
+  </nav>
+
+  <main class="stage">
+
+    <!-- RED NEURONAL: dos copias de la misma imagen.
+         · bio-fondo: casi apagada, siempre visible.
+         · bio-luz: a pleno brillo, solo se ve dentro del círculo de luz
+           que sigue al ratón (máscara que mueve js/biocomputacion.js).
+         Cambia SOLO el src de las dos imágenes si tu archivo se llama distinto. -->
+    <div class="bio" id="bio">
+      <img class="bio-fondo" src="../assets/red_neuronal.jpg" alt="" aria-hidden="true">
+      <div class="bio-luz" id="bioLuz">
+        <img src="../assets/red_neuronal.jpg" alt="Red de tejido neuronal que se ilumina al pasar el ratón">
+      </div>
+      <!-- Aquí el JS añade una pequeña cruz en cada punto con DATA (siempre visible) -->
+    </div>
+
+    <!-- Texto de la sección (misma estructura que realidad.html) -->
+    <section class="bio-texto">
+      <h2>Tejidos neuronales,
+        biocomputadoras</h2>
+      <p>“Desde 2025, se puede comprar un ordenador cuyo componente más extraño no es un nuevo procesador, sino un cultivo de neuronas humanas vivas. El CL1, desarrollado por la empresa australiana Cortical Labs, se comercializa como un sistema de computación biológica e integra células neuronales sobre una matriz de electrodos. Esta permite estimularlas y registrar su actividad, mientras las mantiene en condiciones adecuadas mediante un sistema interno de soporte vital.”</p>
+      <p>Y es que los tejidos neuronales son una gran red de energía, que se puede transformar en electricidad, como si de diminutos cables se tratasen. Estas redes son conectomas.</p>
+    </section>
+
+    <!-- PUNTOS DE DATA (3). Misma estructura que el panel DATA del index.
+         data-x / data-y = posición del punto sobre la IMAGEN, de 0 a 1
+         (0 0 = esquina superior izquierda · 1 1 = esquina inferior derecha).
+         Cuando el usuario PARA el ratón cerca de uno, aparece su panel.
+         data-min / data-max = rango por el que "oscila" el número en vivo. -->
+    <aside class="data bio-data" data-x="0.30" data-y="0.62" data-min="812300" data-max="812520" aria-live="polite">
+      <p>SRC CORTICAL LABS · CL1 MEA-59
+        NODO 01 200 OK · 59 ELECTRODOS
+        SOPORTE VITAL 37.0 °C · PH 7.40</p>
+      <p>Neuronas vivas en el cultivo:</p>
+      <span class="contador">812.406</span>
+      <div class="bar"><i></i></div>
+    </aside>
+
+    <aside class="data bio-data" data-x="0.84" data-y="0.30" data-min="1180" data-max="1240" aria-live="polite">
+      <p>SRC NEUROSTREAM v4.2 · SPIKE SORTER
+        NODO 02 200 OK · 1.024 CANALES
+        LATENCIA SINÁPTICA 0.8 MS</p>
+      <p>Impulsos eléctricos por segundo:</p>
+      <span class="contador">1.204</span>
+      <div class="bar"><i></i></div>
+    </aside>
+
+    <aside class="data bio-data" data-x="0.55" data-y="0.20" data-min="7392040" data-max="7392190" aria-live="polite">
+      <p>SRC CONNECTOME ATLAS · HUMAN-H01
+        NODO 03 200 OK · 1.4 PB
+        RECONSTRUCCIÓN 3D 63 %</p>
+      <p>Conexiones sinápticas mapeadas:</p>
+      <span class="contador">7.392.118</span>
+      <div class="bar"><i></i></div>
+    </aside>
+
+
+    <!-- Indicación de interacción -->
+    <p class="hint" data-ocultar-con="hint:ocultar">Mueve el ratón · detente sobre una cruz</p>
+
+    <h1 class="brand">Ciberespacio</h1>
+    <p class="credits">AMORE© 2026
+      ESD Gráfica Multimedia</p>
+  </main>
+
+  <script src="../js/biocomputacion.js"></script>
+  <!-- Oculta la pastilla de indicación tras la primera interacción -->
+  <script src="../js/hint.js"></script>
+</body>
+</html>

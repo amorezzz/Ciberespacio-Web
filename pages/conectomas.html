@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ciberespacio · Recreaciones de los conectomas</title>
+  <link rel="icon" href="../assets/globe_icon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Share+Tech+Mono&display=swap">
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/conectomas.css">
+</head>
+<body>
+   <nav class="nav" aria-label="Secciones">
+    <!-- Icono de regreso a la portada -->
+    <a class="nav__home" href="../index.html" aria-label="Volver al inicio">
+      <img src="../assets/globe_icon.svg" alt="" width="41" height="41">
+    </a>
+    <a class="nav__item" data-id="realidad" data-title="La realidad y la simulación" href="realidad.html">
+      <svg viewBox="0 0 30 30" aria-hidden="true">
+        <polygon points="15,3 28,27 2,27"/>
+      </svg>
+      <span>La realidad y la
+        simulación</span>
+    </a>
+
+    <a class="nav__item" data-id="implantes" data-title="Tejidos neuronales, biocomputadoras" href="biocomputacion.html">
+      <svg viewBox="0 0 30 30" aria-hidden="true">
+        <polygon points="15,3 28,27 2,27"/>
+      </svg>
+      <span>Tejidos neuronales,
+        biocomputadoras</span>
+    </a>
+
+    <!-- is-active: marca esta sección como la página actual -->
+    <a class="nav__item is-active" aria-current="page" data-id="biocomputacion" data-title="Recreaciones de los conectomas" href="conectomas.html">
+      <svg viewBox="0 0 30 30" aria-hidden="true">
+        <polygon points="15,3 28,27 2,27"/>
+      </svg>
+      <span>Recreaciones de los
+        conectomas</span>
+    </a>
+
+    <a class="nav__item" data-id="inteligencia" data-title="Tus propias copias digitales" href="copias.html">
+      <svg viewBox="0 0 30 30" aria-hidden="true">
+        <polygon points="15,3 28,27 2,27"/>
+      </svg>
+      <span>Tus propias copias
+        digitales</span>
+    </a>
+
+    <a class="nav__item" data-id="paralelismo" data-title="Una inmortalidad digital" href="inmortalidad.html">
+      <svg viewBox="0 0 30 30" aria-hidden="true">
+        <polygon points="15,3 28,27 2,27"/>
+      </svg>
+      <span>Una inmortalidad
+        digital</span>
+    </a>
+
+    <a class="nav__item" data-id="conectomas" data-title="Adéntrate en el ciberespacio" href="adentrate.html">
+      <svg viewBox="0 0 30 30" aria-hidden="true">
+        <polygon points="15,3 28,27 2,27"/>
+      </svg>
+      <span>Adéntrate en el
+        ciberespacio</span>
+    </a>
+  </nav>
+
+  <main class="stage">
+
+    <!-- HÉLICE DE ADN: la dibuja js/conectomas.js en este canvas.
+         El usuario arrastra de un punto a su pareja para unirlos.
+         Al unir todos, arranca la animación final. -->
+    <canvas class="cone-canvas" id="cone" aria-label="Hélice de ADN: arrastra de un punto a su pareja para unirlos"></canvas>
+
+    <!-- Texto de la sección (misma estructura que realidad.html) -->
+    <section class="cone-texto">
+      <h2>Recreaciones de los
+        conectomas</h2>
+      <p>Un conectoma, en resumidas cuentas, es el mapa de conexiones neuronales de un cerebro; nosotros, los humanos, tenemos uno cada uno. Un conectoma, al ser una red de neuronas, deriva a ser una red eléctrica, cuyos estímulos se pueden derivar al lenguaje computacional. Esto provoca que digitalmente se puedan recrear, conectando punto por punto de la red, hasta dar con el mapa completo. El primer conectoma recreado digitalmente fue el de una mosca de la fruta.</p>
+      <p>“El mapa neuronal completo de un macho de Drosophila ha pasado en pocos días del laboratorio a Minecraft, Doom, el comercio de bitcoins y todo tipo de experimentos imposibles. Detrás del fenómeno hay un hito científico: reconstruir, neurona a neurona, todo su sistema nervioso central.”</p>
+    </section>
+
+    <!-- Instrucción / contador de conexiones (el JS cambia el texto) -->
+    <p class="caption cone-hud" id="coneHud">00/00 sinapsis</p>
+
+    <!-- DATA final: aparece cuando el conectoma está completo -->
+    <aside class="data cone-data" id="coneData" aria-live="polite">
+      <p>SRC FLYWIRE · JANELIA · DROSOPHILA ♂ CNS
+        NODO 04 200 OK · MAPA COMPLETO
+        ≈125 M SINAPSIS · COPIA DIGITAL EN EJECUCIÓN</p>
+      <p>Neuronas reconstruidas:</p>
+      <span class="contador" id="coneContador">0</span>
+      <div class="bar"><i></i></div>
+    </aside>
+
+    <!-- Volver a empezar (solo aparece al final) -->
+    <button class="cone-reset" id="coneReset" type="button">↺ Reconstruir de nuevo</button>
+
+    <!-- Indicación de interacción (se oculta al completar el conectoma) -->
+    <p class="hint" id="coneHint" data-en="#cone">Arrastra de un punto a su pareja</p>
+
+    <h1 class="brand">Ciberespacio</h1>
+    <p class="credits">AMORE© 2026
+      ESD Gráfica Multimedia</p>
+  </main>
+
+  <script src="../js/conectomas.js"></script>
+  <!-- Oculta la pastilla de indicación tras la primera interacción -->
+  <script src="../js/hint.js"></script>
+</body>
+</html>

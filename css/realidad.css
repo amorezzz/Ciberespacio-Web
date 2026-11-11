@@ -1,0 +1,81 @@
+/* =========================================================
+   REALIDAD.CSS — solo para realidad.html
+   ========================================================= */
+
+/* ---------- SLIDER ---------- */
+/* El slider ocupa toda la .stage (debajo del nav) */
+.realidad-slider {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--bg);
+
+  /* Variables propias del componente img-comparison-slider */
+  --divider-width: 3px;                    /* grosor de la línea */
+  --divider-color: var(--blue);            /* línea azul, como el nav */
+  --default-handle-color: var(--yellow);   /* flechas del tirador */
+  --default-handle-opacity: 1;
+  --default-handle-width: 44px;
+  --default-handle-shadow: var(--glow-y);
+}
+
+/* Quita el recuadro de foco del navegador (el teclado sigue funcionando) */
+.realidad-slider:focus {
+  outline: none;
+}
+
+/* Vídeo y canvas: mismo tamaño y mismo recorte ("cover"),
+   así los píxeles del vídeo y los caracteres ASCII coinciden exactamente */
+.realidad-slider video,
+.realidad-slider canvas {
+  display: block;
+  width: 100%;
+  height: calc(100vh - var(--nav-h));
+  object-fit: cover;
+  background: var(--bg);
+}
+
+/* ---------- TEXTO ---------- */
+.realidad-texto {
+  position: absolute;
+  top: clamp(40px, 9vh, 100px);
+  left: clamp(18px, 3.3vw, 56px);
+  width: min(340px, 40vw);
+  pointer-events: none;   /* el ratón "atraviesa" el texto y mueve el slider */
+  z-index: 2;
+}
+
+/* Los estilos de texto (h2 y p) vienen de styles.css.
+   Aquí solo se añaden la animación de entrada y la separación. */
+
+/* Fade in de 1.5s al cargar la página */
+.realidad-texto h2,
+.realidad-texto p {
+  animation: aparecer 1.5s ease-out both;
+}
+
+.realidad-texto p + p {
+  margin-top: 20px;
+}
+
+@keyframes aparecer {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* La marca y los créditos quedan por encima del vídeo
+   pero no bloquean el slider */
+.stage .brand,
+.stage .credits {
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* ---------- MÓVIL ---------- */
+@media (max-width: 900px) {
+  .realidad-texto {
+    width: auto;
+    right: 18px;
+    top: 20px;
+  }
+}

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ciberespacio · Tus propias copias digitales</title>
+  <link rel="icon" href="../assets/globe_icon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Share+Tech+Mono&display=swap">
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/copias.css">
+</head>
+<body>
+   <nav class="nav" aria-label="Secciones">
+    <!-- Icono de regreso a la portada -->
+    <a class="nav__home" href="../index.html" aria-label="Volver al inicio">
+      <img src="../assets/globe_icon.svg" alt="" width="41" height="41">
+    </a>
+    <a class="nav__item" data-id="realidad" data-title="La realidad y la simulación" href="realidad.html">
+      <svg viewBox="0 0 30 30" aria-hidden="true">
+        <polygon points="15,3 28,27 2,27"/>
+      </svg>
+      <span>La realidad y la
+        simulación</span>
+    </a>
+
+    <a class="nav__item" data-id="implantes" data-title="Tejidos neuronales, biocomputadoras" href="biocomputacion.html">
+      <svg viewBox="0 0 30 30" aria-hidden="true">
+        <polygon points="15,3 28,27 2,27"/>
+      </svg>
+      <span>Tejidos neuronales,
+        biocomputadoras</span>
+    </a>
+
+    <a class="nav__item" data-id="biocomputacion" data-title="Recreaciones de los conectomas" href="conectomas.html">
+      <svg viewBox="0 0 30 30" aria-hidden="true">
+        <polygon points="15,3 28,27 2,27"/>
+      </svg>
+      <span>Recreaciones de los
+        conectomas</span>
+    </a>
+
+    <!-- is-active: marca esta sección como la página actual -->
+    <a class="nav__item is-active" aria-current="page" data-id="inteligencia" data-title="Tus propias copias digitales" href="copias.html">
+      <svg viewBox="0 0 30 30" aria-hidden="true">
+        <polygon points="15,3 28,27 2,27"/>
+      </svg>
+      <span>Tus propias copias
+        digitales</span>
+    </a>
+
+    <a class="nav__item" data-id="paralelismo" data-title="Una inmortalidad digital" href="inmortalidad.html">
+      <svg viewBox="0 0 30 30" aria-hidden="true">
+        <polygon points="15,3 28,27 2,27"/>
+      </svg>
+      <span>Una inmortalidad
+        digital</span>
+    </a>
+
+    <a class="nav__item" data-id="conectomas" data-title="Adéntrate en el ciberespacio" href="adentrate.html">
+      <svg viewBox="0 0 30 30" aria-hidden="true">
+        <polygon points="15,3 28,27 2,27"/>
+      </svg>
+      <span>Adéntrate en el
+        ciberespacio</span>
+    </a>
+  </nav>
+
+  <main class="stage">
+
+    <!-- MEDUSA: un solo vídeo. No se ve directamente: js/copias.js
+         lo pinta en el <canvas> pasándolo por el filtro activo.
+         Cada clic en la página = siguiente filtro ("copia").
+         Cambia SOLO el src si tu archivo se llama distinto. -->
+    <video class="copias-video" id="medusa"
+           src="../assets/medusa.mp4"
+           autoplay muted loop playsinline aria-hidden="true"></video>
+    <canvas class="copias-canvas" id="medusa-canvas"
+            aria-label="Vídeo de una medusa que cambia de filtro digital con cada clic"></canvas>
+
+    <!-- Texto de la sección (misma estructura que realidad.html) -->
+    <section class="copias-texto">
+      <h2>Tus propias
+        copias digitales</h2>
+      <p>A partir de la idea de recrear conectomas, podemos pensar en que existan distintas copias de un mismo ser, de un mismo cerebro, de una misma identidad. Basando tu cerebro en ceros y unos, infinitas copias de tu consciencia pueden vagar por la extensión del ciberespacio.</p>
+
+      <!-- HUD: lo actualiza js/copias.js -->
+      <div class="copias-hud" aria-live="polite">
+        <p id="copia-num">Copia 01/07</p>
+        <p id="copia-nombre">Original</p>
+      </div>
+    </section>
+
+    <!-- Indicación de interacción -->
+    <p class="hint" data-ocultar-con="click">Haz clic para generar otra copia</p>
+
+    <h1 class="brand">Ciberespacio</h1>
+    <p class="credits">AMORE© 2026
+      ESD Gráfica Multimedia</p>
+  </main>
+
+  <script src="../js/copias.js"></script>
+  <!-- Oculta la pastilla de indicación tras la primera interacción -->
+  <script src="../js/hint.js"></script>
+</body>
+</html>

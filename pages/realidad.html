@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ciberespacio · La realidad y la simulación</title>
+  <link rel="icon" href="../assets/globe_icon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Share+Tech+Mono&display=swap">
+
+  <!-- Slider -->
+  <script type="module"
+    src="https://cdn.jsdelivr.net/npm/img-comparison-slider@8/dist/index.js">
+  </script>
+  <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/img-comparison-slider@8/dist/styles.css">
+
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/realidad.css">
+</head>
+
+<body>
+  <nav class="nav" aria-label="Secciones">
+    <!-- Icono de regreso a la portada -->
+    <a class="nav__home" href="../index.html" aria-label="Volver al inicio">
+      <img src="../assets/globe_icon.svg" alt="" width="41" height="41">
+    </a>
+    <!-- is-active: marca esta sección como la página actual -->
+    <a class="nav__item is-active" aria-current="page" data-id="realidad" data-title="La realidad y la simulación" href="realidad.html">
+      <svg viewBox="0 0 30 30" aria-hidden="true">
+        <polygon points="15,3 28,27 2,27"/>
+      </svg>
+      <span>La realidad y la
+        simulación</span>
+    </a>
+
+    <a class="nav__item" data-id="implantes" data-title="Tejidos neuronales, biocomputadoras" href="biocomputacion.html">
+      <svg viewBox="0 0 30 30" aria-hidden="true">
+        <polygon points="15,3 28,27 2,27"/>
+      </svg>
+      <span>Tejidos neuronales,
+        biocomputadoras</span>
+    </a>
+
+    <a class="nav__item" data-id="biocomputacion" data-title="Recreaciones de los conectomas" href="conectomas.html">
+      <svg viewBox="0 0 30 30" aria-hidden="true">
+        <polygon points="15,3 28,27 2,27"/>
+      </svg>
+      <span>Recreaciones de los
+        conectomas</span>
+    </a>
+
+    <a class="nav__item" data-id="inteligencia" data-title="Tus propias copias digitales" href="copias.html">
+      <svg viewBox="0 0 30 30" aria-hidden="true">
+        <polygon points="15,3 28,27 2,27"/>
+      </svg>
+      <span>Tus propias copias
+        digitales</span>
+    </a>
+
+    <a class="nav__item" data-id="paralelismo" data-title="Una inmortalidad digital" href="inmortalidad.html">
+      <svg viewBox="0 0 30 30" aria-hidden="true">
+        <polygon points="15,3 28,27 2,27"/>
+      </svg>
+      <span>Una inmortalidad
+        digital</span>
+    </a>
+
+    <a class="nav__item" data-id="conectomas" data-title="Adéntrate en el ciberespacio" href="adentrate.html">
+      <svg viewBox="0 0 30 30" aria-hidden="true">
+        <polygon points="15,3 28,27 2,27"/>
+      </svg>
+      <span>Adéntrate en el
+        ciberespacio</span>
+    </a>
+  </nav>
+
+  <main class="stage">
+
+    <!-- SLIDER: a la izquierda (slot "first") el vídeo real,
+         a la derecha (slot "second") el mismo vídeo convertido en ASCII
+         dibujado en un <canvas> por js/realidad.js -->
+    <img-comparison-slider class="realidad-slider" value="50">
+      <video slot="first" id="video-real"
+             src="../assets/realidad.mp4"
+             autoplay muted loop playsinline></video>
+      <canvas slot="second" id="video-ascii"
+              aria-label="El mismo vídeo convertido en caracteres ASCII"></canvas>
+    </img-comparison-slider>
+
+    <!-- Texto de la sección (no bloquea el arrastre del slider) -->
+    <section class="realidad-texto">
+      <h2>La realidad y la
+        simulación</h2>
+      <p>Durante toda la trayectoria del ser humano, su evolución se ha dado lugar en el mundo real. Esto cambia con la creación del primer ordenador, dando lugar a que formemos parte de un mundo virtual, lo que llamamos ciberespacio. Este mundo virtual no es más que código, el cual parte de ceros y unos, y en el que nosotros hemos tratado de simular nuestra realidad en él.</p>
+      <p>Parece ser que lo tangible ha pasado de moda, que la veracidad del tacto no significa nada, que no requerimos de conocimiento empírico. Si el ciberespacio nos brinda la realidad de forma sencilla, el ser humano lo abraza.</p>
+    </section>
+
+    <!-- Indicación de interacción -->
+    <p class="hint" data-en=".realidad-slider">Arrastra la línea azul para comparar</p>
+
+    <h1 class="brand">Ciberespacio</h1>
+    <p class="credits">AMORE© 2026
+      ESD Gráfica Multimedia</p>
+  </main>
+
+  <script src="../js/filtro-ascii.js"></script>
+  <!-- Oculta la pastilla de indicación tras la primera interacción -->
+  <script src="../js/hint.js"></script>
+</body>
+</html>

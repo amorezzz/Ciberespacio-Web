@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ciberespacio · Adéntrate en el ciberespacio</title>
+  <link rel="icon" href="xxx" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Share+Tech+Mono&display=swap">
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/adentrate.css">
+</head>
+<body>
+   <nav class="nav" aria-label="Secciones">
+    <!-- Icono de regreso a la portada -->
+    <a class="nav__home" href="../index.html" aria-label="Volver al inicio">
+      <img src="../assets/globe_icon.svg" alt="" width="41" height="41">
+    </a>
+    <a class="nav__item" data-id="realidad" data-title="La realidad y la simulación" href="realidad.html">
+      <svg viewBox="0 0 30 30" aria-hidden="true">
+        <polygon points="15,3 28,27 2,27"/>
+      </svg>
+      <span>La realidad y la
+        simulación</span>
+    </a>
+
+    <a class="nav__item" data-id="implantes" data-title="Tejidos neuronales, biocomputadoras" href="biocomputacion.html">
+      <svg viewBox="0 0 30 30" aria-hidden="true">
+        <polygon points="15,3 28,27 2,27"/>
+      </svg>
+      <span>Tejidos neuronales,
+        biocomputadoras</span>
+    </a>
+
+    <a class="nav__item" data-id="biocomputacion" data-title="Recreaciones de los conectomas" href="conectomas.html">
+      <svg viewBox="0 0 30 30" aria-hidden="true">
+        <polygon points="15,3 28,27 2,27"/>
+      </svg>
+      <span>Recreaciones de los
+        conectomas</span>
+    </a>
+
+    <a class="nav__item" data-id="inteligencia" data-title="Tus propias copias digitales" href="copias.html">
+      <svg viewBox="0 0 30 30" aria-hidden="true">
+        <polygon points="15,3 28,27 2,27"/>
+      </svg>
+      <span>Tus propias copias
+        digitales</span>
+    </a>
+
+    <a class="nav__item" data-id="paralelismo" data-title="Una inmortalidad digital" href="inmortalidad.html">
+      <svg viewBox="0 0 30 30" aria-hidden="true">
+        <polygon points="15,3 28,27 2,27"/>
+      </svg>
+      <span>Una inmortalidad
+        digital</span>
+    </a>
+
+    <!-- is-active: marca esta sección como la página actual -->
+    <a class="nav__item is-active" aria-current="page" data-id="conectomas" data-title="Adéntrate en el ciberespacio" href="adentrate.html">
+      <svg viewBox="0 0 30 30" aria-hidden="true">
+        <polygon points="15,3 28,27 2,27"/>
+      </svg>
+      <span>Adéntrate en el
+        ciberespacio</span>
+    </a>
+  </nav>
+
+  <main class="stage">
+
+    <!-- CÁMARA: js/adentrate.js pinta aquí la webcam con el filtro PIXELADO.
+         El píxel crece y la imagen se vuelve azul (mapa de degradado)
+         cada 30 s que el usuario pasa en el ciberespacio, hasta los 12 min (24 niveles). -->
+    <video class="adentrate-video" id="webcam" muted playsinline></video>
+    <canvas class="adentrate-canvas" id="webcam-canvas"
+            aria-label="Tu imagen de cámara, cada vez más pixelada y azul según el tiempo que pasas en el ciberespacio"></canvas>
+
+    <!-- Texto de la sección (marco negro con borde naranja para que se lea sobre la cámara) -->
+    <section class="adentrate-texto">
+      <h2>Adéntrate en el
+        ciberespacio</h2>
+      <p>Contémplate formar parte de este ciberespacio, forma parte del ruido y del silencio simultáneos, del todo y la nada al mismo tiempo. ¿Cómo podemos estar tan seguros de que no estamos ya dentro de esta Matrix? ¿Acaso tú lo estás?</p>
+
+      <!-- HUD: lo actualiza js/adentrate.js -->
+      <div class="adentrate-hud" aria-live="polite">
+        <p id="nivel-num">Nivel 00/24</p>
+        <p id="nivel-pixel">Píxel 1px · Señal 100%</p>
+        <p id="nivel-siguiente">Siguiente nivel en 00:30</p>
+        <p id="nivel-tiempo">Tiempo en la red 00:00:00</p>
+        <div class="adentrate-barra"><i id="nivel-barra"></i></div>
+      </div>
+    </section>
+
+    <!-- Indicación de interacción: se oculta cuando la cámara arranca -->
+    <p class="hint" id="webcam-hint" data-ocultar-con="none">Permite el acceso a la cámara para adentrarte</p>
+
+    <h1 class="brand">Ciberespacio</h1>
+    <p class="credits">AMORE© 2026
+      ESD Gráfica Multimedia</p>
+  </main>
+
+  <script src="../js/adentrate.js"></script>
+  <!-- Oculta la pastilla de indicación cuando arranca la cámara -->
+  <script src="../js/hint.js"></script>
+</body>
+</html>
