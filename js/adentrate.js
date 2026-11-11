@@ -16,8 +16,8 @@
    ========================================================= */
 
 // ---------- AJUSTES ----------
-const NIVELES_MAX = 24;          // 24 niveles × 120 s = 48 minutos
-const SEGUNDOS_POR_NIVEL = 120;
+const NIVELES_MAX = 24;          // 24 niveles × 30 s = 12 minutos
+const SEGUNDOS_POR_NIVEL = 30;
 
 // Tamaño del píxel (en px de pantalla) en el nivel 1 y en el nivel 24.
 // Igual que el chico: crecimiento exponencial entre medias.
